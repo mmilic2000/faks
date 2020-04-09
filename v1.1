@@ -1,0 +1,21 @@
+#include <stdio.h>
+#include <string.h>
+#include <math.h>
+
+int operacije(int b1, int b2) 
+{
+	printf("%d + %d = %d\n", b1, b2, b1 + b2);
+	printf("%d - %d = %d\n", b1, b2, b1 - b2);
+	printf("%d * %d = %d\n", b1, b2, b1 * b2);
+	printf("%d / %d = %d\n", (float)b1, (float)b2, (float)b1 / b2);
+}
+
+int main()
+{
+	int br1, br2;
+
+	printf("Unesi 2 cijela broja: ");
+	scanf("%d %d", &br1, &br2);
+	printf("%d %d", br1, br2);
+	operacije(br1, br2);
+}
