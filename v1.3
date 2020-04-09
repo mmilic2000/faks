@@ -1,0 +1,20 @@
+#include <stdio.h>
+#include <string.h>
+#include <math.h>
+
+int main()
+{
+	char slovo;
+
+	printf("Upisite slovo:\n");
+	scanf("%c", &slovo);
+
+	if (slovo >= 'a' && slovo <= 'z')
+		printf("Malo slovo");
+	else if (slovo >= 'A' && slovo <= 'Z')
+		printf("Veliko slovo");
+	else
+		printf("Nije slovo");
+
+	return 0;
+}
