@@ -1,0 +1,27 @@
+#include <stdio.h>
+#include <string.h>
+#include <math.h>
+
+
+
+int main()
+{
+	int a, b, *pa, *pb;
+
+	pa = &a;
+	pb = &b;
+
+	printf("Unesi 2 cijela broja: \n");
+	scanf("%d %d", &a, &b);
+
+	printf("Vrijednost a = %d nalazi se na pa adresi: %p\n", a, pa);
+	printf("Vrijednost b = %d nalazi se na pb adresi: %p\n", b, pb);
+
+	b = *pa;
+	printf("Varijabli b pridruzena je vrijednost a\n");
+	
+	printf("Vrijednost a = %d na adresi pa: %p\n", a, pa);
+	printf("Vrijednost b = %d na adresi pb: %p\n", b, pb);
+
+	return 0;
+}
