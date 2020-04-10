@@ -1,0 +1,26 @@
+#include <stdio.h>
+#include <string.h>
+#include <math.h>
+
+int proc_red()
+{
+	int brRed = 0;
+	while(getchar() != '\n'){
+		brRed++;
+	} 
+	return brRed;
+}
+int main()
+{
+	int n, brRed = 0, zbrRed = 0;
+	float prosj;
+
+	while ((n = proc_red()) != 0) {
+		zbrRed += n;
+		brRed++;
+	}
+	(float)prosj = zbrRed / brRed;
+	printf("Prosjecan broj znakova po retku je: %.3f", prosj);
+
+	return 0;
+}
