@@ -1,0 +1,36 @@
+#include <stdio.h>
+#define max 100
+
+int slozi(int n, int x[])
+{
+	int i, j, temp;
+
+	for (i = 0; i < n; i++) {
+		for (j = i + 1; j < n; j++) {
+			if (x[i] > x[j]) {
+				temp = x[i];
+				x[i] = x[j];
+				x[j] = temp;
+			}
+		}
+	}
+	return;
+}
+
+int main()
+{
+	int niz[max], n, i;
+
+	printf("Koliko elemenata ima niz?\n");
+	scanf("%d", &n);
+	
+	printf("Unesi elemente niza\n");
+	for (i = 0; i < n; i++) {
+		scanf("%d", &niz[i]);
+	}
+	slozi(n, niz);
+	printf("Slozeni niz:\n");
+	for (i = 0; i < n; i++) {
+		printf("%d  ", niz[i]);
+	}
+}
