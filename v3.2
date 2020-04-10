@@ -1,0 +1,36 @@
+#include <stdio.h>
+
+int zam1(int x, int y)
+{
+	int temp;
+
+	temp = x;
+	x = y;
+	y = temp;
+
+	return;
+}
+
+int zam2(int* x, int* y) 
+{
+	int temp;
+
+	temp = *x;
+	*x = *y;
+	*y = temp;
+
+	return;
+}
+int main()
+{
+	int a, b;
+
+	printf("Unesi 2 cijela broja: ");
+	scanf("%d %d", &a, &b);
+
+	zam1(a, b);
+	printf("%d %d\n", a, b);
+
+	zam2(&a, &b);
+	printf("%d %d\n", a, b);
+}
