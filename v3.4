@@ -1,0 +1,36 @@
+#include <stdio.h>
+#include <ctype.h>
+
+void analiza(char redak[], int* sa, int* su, int* br, int* zn)
+{
+	char z;
+	int i = 0;
+
+	while ((z = toupper(redak[i])) != '\n') {
+		if ((z == 'A') || (z == 'E') || (z == 'I') || (z == 'O') || (z == 'U')) {
+			++* sa;
+		}
+		else if ((z >= 'A') && (z <= 'Z')) {
+			++* su;
+		}
+		else if ((z >= '0') && (z <= '9')) {
+			++* br;
+		}
+		else
+			++* zn;
+	}
+	return;
+}
+
+int main()
+{
+
+	char redak[80];
+	int suglasnici = 0, samoglasnici = 0, brojevi = 0, znakovi = 0;
+
+	fgets(redak, sizeof(redak), stdin);
+	analiza(redak, &samoglasnici, &suglasnici, &brojevi, &znakovi);
+	printf("Redak sadrzava %d samoglasnika\n%d suglasnika\n%d brojeva\n%d znakova", samoglasnici, suglasnici, brojevi, znakovi);
+	return 0;
+}
+
