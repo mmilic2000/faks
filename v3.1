@@ -1,0 +1,14 @@
+#include <stdio.h>
+#include <math.h>
+#define kvad(x) ((x)*(x))
+int main() 
+{
+	int i, x[11], y[11];
+
+	for (i = 0; i <= 10; i++) {
+		x[i] = i;
+		y[i] = kvad(x[i]);
+		printf("%d\t%d\n", x[i], y[i]);
+	}
+	return 0;
+}
