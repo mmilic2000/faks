@@ -1,0 +1,54 @@
+#include <stdio.h>
+#define MAX 20
+
+void mzbroji(int a[][MAX], int b[][MAX], int rez[][MAX], int red, int stup) 
+{
+	int i, j;
+	for (i = 0; i < red; i++) {
+		for (j = 0; j < stup; j++) {
+			rez[i][j] = a[i][j] + b[i][j];
+		}
+	}
+}
+void munesi(int mat[][MAX], int red, int stup)
+{
+	int i, j;
+	for (i = 0; i < red; i++) {
+		for (j = 0; j < stup; j++) {
+			printf("Unesite vrijednost na (%d, %d) poziciji:\n", i, j);
+			scanf("%d", &mat[i][j]);
+		}
+	}
+}
+void ispisi(int mat[][MAX], int red, int stup)
+{
+	int i, j;
+	for (i = 0; i < red; i++) {
+		for (j = 0; j < stup; j++) {
+			printf("%d  ",mat[i][j]);
+		}
+		printf("\n");
+	}
+}
+int main()
+{
+	int red, stup;
+	int a[MAX][MAX], b[MAX][MAX], rez[MAX][MAX];
+	printf("Koliko redova imaju matrice?\n");
+	scanf("%d", &red);
+	printf("Koliko stupaca imaju matrice?\n");
+	scanf("%d", &stup);
+	printf("Unesi vrijednosti 1. matrice\n");
+	munesi(a, red, stup);
+	printf("Unesi vrijednosti 2. matrice\n");
+	munesi(b, red, stup);
+	printf("Prva matrica:\n");
+	ispisi(a, red, stup);
+	printf("Druga matrica:\n");
+	ispisi(b, red, stup);
+	mzbroji(a, b, rez, red, stup);
+	printf("Rezultat zbrajanja je:\n");
+	ispisi(rez, red, stup);
+	return 0;
+}
+
