@@ -1,0 +1,40 @@
+#include <stdio.h>
+#define MAX 101
+#define QUAD ((x)*(x)*(x)*(x))
+
+double fun(double x)
+{
+	return (x) * (x) * (x);
+}
+double trapz(int n, double f[], double dx)
+{
+	double y = 0;
+	int i;
+	for (i = 0; i < n; i++) {
+		y += f[i] + f[i + 1];
+	}
+	return .5 * y * dx;
+}
+int main()
+{
+	int i, n;
+	double xa, xb, dx, x, intg;
+	double f[MAX];
+
+	printf("Unesi granice integracije\n");
+	scanf("%lf %lf", &xa, &xb);
+	printf("Broj podjela\n");
+	scanf("%d", &n);
+
+	dx = (xb - xa) / (double)n;
+	for (i = 0; i <= n; i++) {
+		x = xa + dx * (double)i;
+		printf("%.4f", x);
+		f[i] = fun(x);
+		printf("\t%.4f\n", f[i]);
+
+	}
+	intg = trapz(n, f, dx);
+	printf("Integral trapezno: %.4f", intg);
+	printf("Integral analiticki: %.4f", 0.25*(QUAD(xb)-(QUAD(xa));
+}
