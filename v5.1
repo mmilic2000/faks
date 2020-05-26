@@ -1,0 +1,17 @@
+#include <stdio.h>
+
+unsigned zbroji(unsigned n) 
+{
+	if (n == 1) return n;
+	return n + zbroji(n - 1);
+}
+
+int main()
+{
+	unsigned a, zbroj;
+	printf("Unesite prirodan broj: ");
+	scanf("%d", &a);
+	zbroj = zbroji(a);
+	printf("Zbroj prvih %d prirodnih brojeva je %d", a, zbroj);
+	return 0;
+}
