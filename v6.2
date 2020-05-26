@@ -1,0 +1,36 @@
+#include <stdio.h>
+#include <malloc.h>
+
+void slozi(int n, int*pniz)
+{
+	int i, j, temp;
+
+	for (i = 0; i < n - 1; i++) {
+		for (j = i + 1; j < n; j++) {
+			if (*(pniz + i) > * (pniz + j)) {
+				temp = *(pniz + i);
+				*(pniz + i) = *(pniz + j);
+				*(pniz + j) = temp;
+			}
+		}
+	}
+}
+
+int main()
+{
+	int n, i;
+	int* pniz;
+
+	printf("Koliko clanova ima niz?\n");
+	scanf("%d", &n);
+	pniz = malloc(n * sizeof(int));
+	for (i = 0; i < n; i++) {
+		printf("Unesite %d. clan niza\n", i + 1);
+		scanf("%d", pniz + i);
+	}
+	slozi(n, pniz);
+	for (i = 0; i < n; i++) {
+		printf("%d  ", *(pniz + i));
+	}
+	return 0;
+}
