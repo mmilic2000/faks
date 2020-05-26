@@ -1,0 +1,21 @@
+#include <stdio.h>
+
+unsigned fakt(unsigned n)
+{
+	if (n == 0)
+		return 1;
+	if (n == 1)
+		return 1;
+	else
+		return (n*fakt(n-1));
+}
+
+int main()
+{
+	unsigned n, faktorijela;
+	printf("Unesite prirodni broj");
+	scanf("%u", &n);
+	faktorijela = fakt(n);
+	printf("Faktorijela %u je %u", n, faktorijela);
+	return 0;
+}
