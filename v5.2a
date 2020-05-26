@@ -1,0 +1,19 @@
+#include <stdio.h>
+
+unsigned zbroji(unsigned a, unsigned b)
+{
+	if (b == 0)
+		return a;
+	else
+		return zbroji(a + 1, b - 1);
+}
+int main()
+{
+	unsigned a, b, sum;
+
+	printf("Unesi 2 broja\n");
+	scanf("%u %u", &a, &b);
+	sum = zbroji(a, b);
+	printf("Zbroj %u i %u je %u", a, b, sum);
+	return 0;
+}
