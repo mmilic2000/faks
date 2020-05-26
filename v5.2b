@@ -1,0 +1,27 @@
+#include <stdio.h>
+
+unsigned pomnozi(unsigned a, unsigned b)
+{
+	if (b == 1)
+		return a;
+	else
+		return zbroji(a, pomnozi(a, b - 1));
+}
+
+unsigned zbroji(unsigned a, unsigned b)
+{
+	if (b == 0)
+		return a;
+	else
+		return zbroji(a + 1, b - 1);
+}
+int main()
+{
+	unsigned a, b, umn;
+
+	printf("Unesi 2 broja\n");
+	scanf("%u %u", &a, &b);
+	umn = pomnozi(a, b);
+	printf("Zbroj %u i %u je %u", a, b, umn);
+	return 0;
+}
