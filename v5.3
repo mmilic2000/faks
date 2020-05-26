@@ -1,0 +1,43 @@
+#include <stdio.h>
+
+unsigned pomakni(unsigned a, unsigned b)
+{
+	if ((a != 1) && (b != 1))
+		return 1;
+	else if ((a != 2) && (b != 2))
+		return 2;
+	else
+		return 3;
+}
+
+void prebaci(unsigned n, unsigned pocetni, unsigned odredisni)
+{
+	unsigned pom;
+	pom = pomakni(pocetni, odredisni);
+
+	if (n == 1) {
+		printf("Prebaci sa %u na %u\n", pocetni, odredisni);
+		return;
+	}
+	else {
+		prebaci(n - 1, pocetni, pom);
+		prebaci(1, pocetni, odredisni);
+		prebaci(n - 1, pom, odredisni);
+		return;
+	}
+}
+
+int main() 
+{
+	unsigned pocetni, odredisni, n;
+
+	printf("Zadana su 3 kolca.\n");
+	printf("Unesite pocetni kolac.");
+	scanf("%u", &pocetni);
+	printf("Unesite odredisni kolac,");
+	scanf("%u", &odredisni);
+	printf("Koliko prstenova ima kolac?");
+	scanf("%u", &n);
+	prebaci(n, pocetni, odredisni);
+	return 0;
+}
