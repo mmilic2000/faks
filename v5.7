@@ -1,0 +1,20 @@
+#include <stdio.h>
+
+int pretrazi(char c, char redak[])
+{
+	
+}
+
+int main()
+{
+	char c, redak[80];
+	int broj;
+
+	printf("Unesi znak koji trazis\n");
+	scanf("%c", &c);
+	printf("Unesi redak teksta za pretrazivanje:\n");
+	fgets(redak, 80, stdin);
+	broj = pretrazi(c, redak);
+	printf("Znak %c u retku se nalazi %d puta.", c, broj);
+	return 0;
+}
