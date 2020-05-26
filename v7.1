@@ -1,0 +1,31 @@
+#include <stdio.h>
+#include <time.h>
+#include <stdlib.h>
+
+int slbroj(int min, int max)
+{
+	int brmog, novagr, slbr;
+
+	brmog = max - min + 1;
+	novagr = RAND_MAX - (RAND_MAX % brmog);
+	slbr = rand();
+	while(slbr > novagr){
+		slbr = rand();
+	}
+	return slbr % brmog + min;
+}
+
+int main()
+{
+	int a, b, i;
+	
+	printf("Unesite donju granicu intervala: \n");
+	scanf("%d", &a);
+	printf("Unesite gornju granicu intervala: \n");
+	scanf("%d", &b);
+	printf("Slucajni brojevi:\n");
+	for (i = 0; i < 5; i++) {
+		printf("%d\n", slbroj(a, b));
+	}
+	return 0;
+}
