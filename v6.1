@@ -1,0 +1,67 @@
+#include <stdio.h>
+#include <math.h>
+#define _USE_MATH_DEFINES
+#define E 2.71828182845904523536
+
+double racunaj(double x, double(*operacija)(double x))
+{
+	return operacija(x);
+}
+
+double kvadriraj(double x)
+{
+	return x * x;
+}
+
+double sinus(double x)
+{
+	return sin(x);
+}
+
+double kosinus(double x)
+{
+	return cos(x);
+}
+
+double korijen(double x)
+{
+	return sqrt(x);
+}
+
+double potencija(double x)
+{
+	return pow(E, x);
+}
+
+int main()
+{
+	double broj, rez;
+	char op;
+
+	printf("Unesite broj u stupnjevima:\n");
+	scanf("%lf", &broj);
+	printf("Odaberite funkciju koja ce se izvrsiti nad brojem:\nk -> kvadriranje\ns -> sinus\nc -> kosinus\nr -> korijen\ne ->potenciranje broja e\n");
+	scanf(" %c", &op); //obavezno razmak prije %c inace ne vata
+	switch (op) {
+	case 'k':
+		rez = racunaj(broj, kvadriraj);
+		break;
+	case 's':
+		rez = racunaj(broj, sinus);
+		break;
+	case 'c':
+		rez = racunaj(broj, kosinus);
+		break;
+	case 'r':
+		rez = racunaj(broj, korijen);
+		break;
+	case 'e':
+		rez = racunaj(broj, potencija);
+		break;
+	default:
+		printf("Greska!");
+		return 1;
+	}
+	printf("Rezultat operacije je: %lf", rez);
+	return 0;
+}
