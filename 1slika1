@@ -1,0 +1,45 @@
+#include <stdio.h>
+
+
+int Naj(int mat[][10], int vel)
+{
+	int i, j;
+	int prvistupac = 0, ostalistupci = 0, jmax = 0;
+
+	for (i = 0; i < vel; i++) {
+		prvistupac += mat[i][0];
+	}
+	for (j = 1; i < vel; j++) {
+		for (i = 0; i < vel; i++) {
+			ostalistupci += mat[i][j];
+			if (ostalistupci >= prvistupac) {
+				prvistupac = ostalistupci;
+				jmax = j;
+				ostalistupci = 0;
+			}
+		}
+	}
+	return jmax;
+}
+
+int main()
+{
+	int i, j, vel, mat[10][10], najveca;
+
+	printf("velicina?\n");
+	scanf("%d", &vel);
+
+	for (i = 0; i < vel; i++) {
+		for (j = 0; j < vel; j++) {
+			scanf("%d", &mat[i][j]);
+		}
+	}
+	for (i = 0; i < vel; i++) {
+		for (j = 0; j < vel;j++) {
+			printf("%d\t", mat[i][j]);
+		}
+		printf("\n");
+	}
+	najveca = Naj(mat, vel);
+	printf("%d", najveca);
+}
