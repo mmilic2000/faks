@@ -1,0 +1,35 @@
+#include <stdio.h>
+
+int ars(int mat[][20], int red, int stup)
+{
+	int zbroj = 0, aritsred = 0;
+	int i, j;
+
+	for (i = 0; i < red; i++) {
+		for (j = 0; j < red; j++) {
+			zbroj += mat[i][j];
+		}
+	}
+	aritsred = zbroj / (red * stup);
+	return aritsred;
+}
+
+int main()
+{
+	int i, j, red, stup, arit = 0;
+	int mat[20][20];
+
+	printf("Redaka?\n");
+	scanf("%d", &red);
+	printf("Stupaca?\n");
+	scanf("%d", &stup);
+	printf("Unos matrice\n");
+	for (i = 0; i < red; i++) {
+		for (j = 0; j < stup; j++) {
+			scanf("%d", &mat[i][j]);
+		}
+	}
+	arit = ars(mat, red, stup);
+	printf("Aritmeticka sredina clanova matrice je %d", arit);
+	return 0;
+}
