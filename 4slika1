@@ -1,0 +1,29 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int rand_ab(int min, int max)
+{
+	int bm = max - min + 1;
+	int gr = RAND_MAX - (RAND_MAX % bm);
+	int rnd = rand();
+	while (rnd > gr) rnd = rand();
+	return (rnd % bm) + min;
+}
+
+void provjera(int pitanja[], int odgovor[], int n)
+{
+	
+}
+
+int main()
+{
+	int i, br[4], vel;
+
+	printf("Koliko pitanja je student naucio\n");
+	scanf("%d", &vel);
+	printf("Unesite brojeve pitanja koje je student naucio(1-20)\n");
+	for (i = 0; i < vel; i++) {
+		scanf("%d", &br[i]);
+	}
+
+}
