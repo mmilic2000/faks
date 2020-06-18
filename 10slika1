@@ -1,0 +1,57 @@
+#include <stdio.h>
+
+void sortiraj(int*polje, int n, int*func(int a, int b))
+{
+	int i, j, temp;
+	for (i = 0; i < n; i++) {
+		for (j = i+1; j < n; j++) {
+			if (func(*(polje + i), *(polje + j))) {
+				temp = *(polje + i);
+				*(polje + i) = *(polje + j);
+				*(polje + j) = temp;
+			}
+		}
+	}
+}
+
+int veciod(int a, int b)
+{
+	return (a > b) ? 1 : 0;
+}
+
+int manjiod(int a, int b)
+{
+	return (a < b) ? 1 : 0;
+}
+
+int main()
+{
+	int polje[5];
+	int i, n = 5;
+	char c;
+
+	printf("Unesi niz od 5 clanova\n");
+	for (i = 0; i < n; i++) {
+		scanf("%d", &polje[i]);
+	}
+	printf("Polje prije sortiranja:\n");
+	for (i = 0; i < n; i++) {
+		printf("%d\t", polje[i]);
+	}
+	printf("\n");
+	printf("Kako zelis sortirati niz\nu za uzlazno\ns za silazno\n");
+	scanf(" %c", &c);
+	switch (c) {
+	case 'u': 
+		sortiraj(polje, n, veciod);
+		break;
+	case 's':
+		sortiraj(polje, n, manjiod);
+		break;
+	}
+	printf("Polje nakon sortiranja\n");
+	for (i = 0; i < n; i++) {
+		printf("%d\t", polje[i]);
+	}
+	return 0;
+}
