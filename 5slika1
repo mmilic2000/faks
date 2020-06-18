@@ -1,0 +1,28 @@
+#include <stdio.h>
+
+//int analiza(int [][10], int, int*)
+
+int main()
+{
+	int mat[10][10];
+	int i, j, vel, brcl;
+
+	printf("Velicina?\n");
+	scanf("%d", &vel);
+	
+
+	for (i = 0; i < vel; i++) {
+		for (j = 0; j < vel; j++) {
+			printf("Unesi %d %d clan matrice\n", i + 1, j + 1);
+			scanf("%d", &mat[i][j]);
+		}
+	}
+	for (i = 0; i < vel; i++) {
+		for (j = 0; j < vel; j++) {
+			printf("%d\t", mat[i][j]);
+		}
+		printf("\n");
+	}
+	brcl = vel * vel;
+	analiza(mat, brcl, )
+}
