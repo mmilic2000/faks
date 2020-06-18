@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 
 int rand_ab(int min, int max)
 {
@@ -12,12 +13,14 @@ int rand_ab(int min, int max)
 
 void provjera(int pitanja[], int odgovor[], int n)
 {
-	
+	int i;
+
+	for(i = 0; i < )
 }
 
 int main()
 {
-	int i, br[4], vel;
+	int i, br[4], vel, pitanja[8];
 
 	printf("Koliko pitanja je student naucio\n");
 	scanf("%d", &vel);
@@ -25,5 +28,12 @@ int main()
 	for (i = 0; i < vel; i++) {
 		scanf("%d", &br[i]);
 	}
-
+	srand((unsigned)time(NULL));
+	for (i = 0; i < 8; i++) {
+		pitanja[i] = rand_ab(1, 20);
+		printf("%d ", pitanja[i]);
+		}
+	}
+	provjera(br, pitanja, vel);
+}
 }
