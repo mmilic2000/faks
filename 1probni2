@@ -1,0 +1,34 @@
+/*(10) Izraditi program koji će u dvodimenzionalnom polju znakova Znakovi veličine (m, n), (m<=5, n<=5).
+Potrebno je ispisati znakove na glavnoj i sporednoj dijagonali.*/
+
+#include<stdio.h>
+
+int main()
+{
+	int i, j, red, stup;
+	char mat[5][5];
+
+	printf("Redaka?\n");
+	scanf("%d", &red);
+	printf("Stupaca?\n");
+	scanf("%d", &stup);
+
+	for (i = 0; i < red; i++) {
+		for (j = 0; j < stup; j++) {
+			scanf(" %c", &mat[i][j]);
+		}
+	}
+	printf("Glavna dijagonala\n");
+	for (i = 0; i < red; i++) {
+		printf("%c\t", mat[i][i]);
+		}
+	printf("\n");
+	printf("Sporedna dijagonala\n");
+	for (i = 0; i < red; i++) {
+		for (j = 0; j < stup; j++) {
+			if (i + j == red - 1) {
+				printf("%c\t", mat[i][j]);
+			}
+		}
+	}
+}
