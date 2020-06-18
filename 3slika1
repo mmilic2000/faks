@@ -1,0 +1,30 @@
+#include<stdio.h>
+#include<math.h>
+
+void izracunajsredinu(int*niz, int vel, double*arit, double*geom)
+{
+	int i, suma = 0, umn = 1;
+	for (i = 0; i < vel; i++) {
+		suma += niz[i];
+	}
+	*arit = suma / vel;
+	for (i = 0; i < vel; i++) {
+		umn *= niz[i];
+	}
+	*geom = (double)pow(umn, 1.0 / (double)vel);
+}
+
+int main()
+{
+	int niz[10], i;
+	double arit, geom;
+
+	printf("Unesi niz\n");
+	for (i = 0; i < 10; i++) {
+		scanf("%d", &niz[i]);
+	}
+	izracunajsredinu(niz, 10, &arit, &geom);
+	printf("Aritmeticka: %lf", arit);
+	printf("Geometrijska: %lf", geom);
+
+}
