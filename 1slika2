@@ -1,0 +1,37 @@
+#include <stdio.h>
+#include<stdlib.h>
+#include <string.h>
+#include <ctype.h>
+
+int prebroji(char recenica[], int* brojac)
+{
+	int brrijeci = 1;
+	int i, duljina;
+	char prethodniznak;
+
+	duljina = strlen(recenica);
+
+	if (duljina > 0) {
+		prethodniznak = recenica[0];
+	}
+	for (i = 0; i <= duljina; i++) {
+		if (recenica[i] == ' ' && prethodniznak != ' ') {
+			++brrijeci;
+		}
+		prethodniznak = recenica[i];
+	}
+	*brojac = brrijeci;
+	return;
+}
+
+int main() 
+{
+	char recenica[256];
+	int brojac;
+
+	printf("Unesi recenicu\n");
+	fgets(recenica, 256, stdin);
+	prebroji(recenica, &brojac);
+	printf("U recenici ima %d rijeci", brojac);
+	return 0;
+}
