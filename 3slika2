@@ -1,0 +1,26 @@
+#include <stdio.h>
+
+int zbroji(int niz[], int vel)
+{
+	int i, zbroj = 0;
+	for (i = 0; i < vel; i++) {
+		zbroj += niz[i];
+	}
+	return zbroj;
+}
+
+int main()
+{
+	int niz[6], i, zbroj;
+
+	printf("Unesi niz\n");
+	for (i = 0; i < 5; i++) {
+		scanf("%d", &niz[i]);
+	}
+	zbroj = zbroji(niz, 5);
+	niz[5] = 30 - zbroj;
+	for (i = 0; i < 6; i++) {
+		printf("%d\t", niz[i]);
+	}
+	return 0;
+}
