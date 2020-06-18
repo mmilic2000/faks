@@ -1,0 +1,31 @@
+#include<stdio.h>
+
+double harmsred(int a[], int n)
+{
+	int i;
+	double sred = 0;
+
+	for (i = 0; i < n; i++) {
+		sred += 1.0 / a[i];
+	}
+	return n / sred;
+}
+
+int main()
+{
+	int i, niz[5];
+	int sredina;
+
+	printf("Unesi niz od 5 clanova\n");
+	for (i = 0; i < 5; i++) {
+		scanf("%d", &niz[i]);
+		if (niz[i] <= 0) {
+			i--;
+			continue;
+		}
+	}
+	sredina = harmsred(niz, 5);
+	printf("Harmonijska sredina je %d", sredina);
+	return 0;
+
+}
