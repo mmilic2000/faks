@@ -1,0 +1,58 @@
+#include <stdio.h>
+
+void slozi(int* p, int n, int (*func)(int a, int b)) 
+{
+	int i, j, temp;
+	for (i = 0;i < n - 1;i++) {
+		for (j = i + 1;j < n; j++) {
+			if (func(*(p + i), *(p + j))){
+				temp = *(p + i);
+				*(p + i) = *(p + j);
+				*(p + j) = temp;
+			}
+		}
+	}
+	return;
+}
+
+int manjiod(int a, int b) {
+	return(a < b) ? 1 : 0;
+}
+
+int veciod(int a, int b) {
+	return(a > b) ? 1 : 0;
+}
+
+int main()
+{
+	int i, j, vel, niz[20];
+	char odabir;
+	int* p;
+	
+
+	printf("velicina\n");
+	scanf("%d", &vel);
+	printf("Unesi niz\n");
+	for (i = 0;	i< vel; i++) {
+		scanf("%d", &niz[i]);
+	}
+	for (i = 0; i < vel; i++) {
+		printf("%d", niz[i]);
+	}
+	printf("\n");
+	p = &niz[0];
+	printf("upisi:\nr za rastuce\tp za padajuce\n");
+	scanf(" %c", &odabir);
+	switch (odabir) {
+	case 'r':
+		slozi(p, vel, manjiod);
+		break;
+	case 'p':
+		slozi(p,vel, veciod);
+		break;
+	}
+	for (i = 0; i < vel; i++) {
+		printf("%d", *(p + i));
+	}
+	return 0;
+}
