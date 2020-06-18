@@ -1,0 +1,25 @@
+/*(10) Izraditi računalni program koji učitava niz znakova u varijablu X (najviše 50).
+Na standardni izlaz ispisati memorijske adrese svih znakova niza X koji imaju parne vrijednosti po ASCII tablici. 
+Također ispisati broj takvih znakova.*/
+
+#include <stdio.h>
+
+int main()
+{
+	int brojac = 0, i, brcl;
+	char x[50];
+
+	printf("Upisi broj clanova\n");
+	scanf("%d", &brcl);
+	printf("Upisi clanove niza\n");
+	for (i = 0; i < brcl; i++) {
+		scanf(" %c", &x[i]);
+	}
+	for (i = 0; i < brcl; i++) {
+		if ((int)x[i] % 2 == 0) {
+			brojac++;
+			printf("%p\n", &x[i]);
+		}
+	}
+	printf("parnih ascii znakova niza ima %d", brojac);
+}
