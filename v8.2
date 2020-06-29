@@ -1,0 +1,62 @@
+#include <stdio.h>
+#include <malloc.h>
+#define MAX 20
+
+zbrmat(int* a[], int* b[], int* c[], int r, int s)
+{
+	int i, j;
+
+	for (i = 0; i < r; i++) {
+		for (j = 0; j < s; j++) {
+			c[i][j] = a[i][j] + b[i][j];
+		}
+	}
+	return;
+}
+
+void unmat(int* a[], int r, int s)
+{
+	int i, j;
+	for (i = 0; i < r; i++) {
+		for (j = 0; j < s; j++) {
+			printf("Unesite [%d, %d] polje matrice: ", i+1, j+1);
+			scanf("%d", &a[i][j]);
+		}
+	}
+	return;
+}
+
+int main()
+{
+	int i, j, r, s;
+	int* a[MAX], * b[MAX], * c[MAX];
+
+	printf("Unesite broj redaka(max 20):\n");
+	scanf("%d", &r);
+	printf("Unesite broj stupaca:\n");
+	scanf("%d", &s);
+
+	for (i = 0; i < r; i++) {
+		a[i] = (int*)malloc(s * sizeof(int));
+		b[i] = (int*)malloc(s * sizeof(int));
+		c[i] = (int*)malloc(s * sizeof(int));
+	}
+	unmat(a, r, s);
+	unmat(b, r, s);
+	zbrmat(a, b, c, r, s);
+	for (i = 0; i < r; i++) {
+		for (j = 0; j < s; j++) {
+			printf("%4d(%x)\t", a[i][j], &a[i][j]);
+		}
+		printf("\n");
+		for (j = 0; j < s; j++) {
+			printf("%4d(%x)\t", b[i][j], &b[i][j]);
+		}
+		printf("\n");
+		for (j = 0; j < s; j++) {
+			printf("%4d(%x)\t", c[i][j], &c[i][j]);
+		}
+		printf("\n");
+	}
+	return 0;
+}
