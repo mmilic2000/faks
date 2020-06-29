@@ -1,0 +1,36 @@
+#include <stdio.h>
+#define MAX 5
+
+void slozi(int* x[])
+{
+	int i, j;
+	int* tmp;
+
+	for (i = 0; i < MAX-1; i++) {
+		for (j = i + 1; j < MAX; j++) {
+			if (*x[i] > *x[j]) {
+				tmp = x[i];
+				x[i] = x[j];
+				x[j] = tmp;
+			}
+		}
+	}
+	return;
+}
+
+int main()
+{
+	int i;
+	int x[MAX], *px[MAX];
+
+	for (i = 0; i < MAX; i++) {
+		printf("Upisite %d clan niza:", i + 1);
+		scanf("%d", &x[i]);
+		px[i] = &x[i];
+	}
+	slozi(px);
+	for (i = 0; i < MAX; i++) {
+		printf("%d\t%d\n", x[i], *px[i]);
+	}
+	return 0;
+}
