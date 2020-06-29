@@ -1,0 +1,66 @@
+#include<stdio.h>
+#include<malloc.h>
+
+int** zbrmat(int**a, int**b, int r, int s)
+{
+	int** c;
+	int i, j;
+
+	c = (int**)malloc(r * sizeof(int*));
+	for (i = 0; i < r; i++) {
+		*(c + i) = (int*)malloc(s * sizeof(int));
+		for (j = 0; j < s; j++) {
+			*(*(c + i) + j) = *(*(a + i) + j) + *(*(b + i) + j);
+		}
+	}
+	return c;
+}
+
+void unmat(int**a, int r, int s)
+{
+	int i, j;
+	for (i = 0; i < r; i++) {
+		for (j = 0; j < s; j++) {
+			printf("Unesite [%d %d] polje matrice: ", i + 1, j + 1);
+			scanf("%d", *(a + i) + j);
+		}
+	}
+	return;
+}
+
+int main()
+{
+	int r, s, i, j;
+	int** a, ** b, ** c;
+
+	printf("Koliko redaka?\n");
+	scanf("%d", &r);
+	printf("Koliko stupaca?");
+	scanf("%d", &s);
+
+	a = (int**)malloc(r * sizeof(int*));
+	b = (int**)malloc(r * sizeof(int*));
+
+	for (i = 0; i < r; i++) {
+		*(a + i) = (int*)malloc(s * sizeof(int));
+		*(b + i) = (int*)malloc(s * sizeof(int));
+	}
+	unmat(a, r, s);
+	unmat(b, r, s);
+	c = zbrmat(a, b, r, s);
+	for (i = 0; i < r; i++) {
+		for (j = 0; j < s; j++) {
+			printf("%4d(%x)", *(*(a + i) + j), *(a + i) + j);
+		}
+		printf("\t");
+		for (j = 0; j < s; j++) {
+			printf("%4d(%x)", *(*(b + i) + j), *(b + i) + j);
+		}
+		printf("\t");
+		for (j = 0; j < s; j++) {
+			printf("%4d(%x)", *(*(c + i) + j), *(c + i) + j);
+		}
+		printf("\n");
+	}
+	return 0;
+}
