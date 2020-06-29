@@ -1,0 +1,50 @@
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+
+int brzn(char**niz, int n, char c)
+{
+	int i, j, br, bmax = 0, imax;
+
+	for (i = 0; i < n; i++) {
+		br = 0;
+		j = 0;
+		while (*(*(niz + i) + j) != '\0') {
+			if (*(*(niz + i) + j) == c) {
+				br++;
+			}
+			j++;
+		}
+		if (bmax < br) {
+			bmax = br;
+			imax = i;
+		}
+	}
+	return imax;
+}
+
+int main()
+{
+	char rec[80], ** rniz = NULL;
+	int i, j, brz, brr = 0;
+
+	do {
+		printf("Unesi %d redak teksta: ", brr + 1);
+		fgets(rec, sizeof(rec), stdin);
+		brz = strlen(rec) - 1;
+		if (brz == 0)
+			break;
+		brr++;
+
+		rniz = (char**)realloc(rniz, brr * sizeof(char*));
+		if (rniz == NULL)
+			return 1;
+		rniz[brr - 1] = (char*)malloc((brz + 1) * sizeof(char));
+		j = 0;
+		while (rec[j] != '\n') {
+			rniz[brr - 1][j] = rec[j];
+			j++;
+		}
+
+	} while (brz != 0);
+}
