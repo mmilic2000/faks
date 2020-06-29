@@ -1,0 +1,19 @@
+#include <stdio.h>
+
+char* mjesec(int n)
+{
+	char* mj[] = { "sij", "vel", "ozu", "trav", "svib", "lip", "srp", "kol", "ruj", "list", "stud", "pros" };
+	char* gr[] = { "GRESKA" };
+	if (n < 0 || n > 12) return *gr;
+	return*(mj + n - 1);
+}
+
+int main()
+{
+	int d, m, g;
+
+	printf("Unesi datum(DD.MM.GGGG): ");
+	scanf("%d %d %d", &d, &m, &g);
+	printf("Uneseni datum u formatu (DD.MMMM.GGGG) je: %d.%s,%d", d, mjesec(m), g);
+	return 0;
+}
