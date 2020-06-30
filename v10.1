@@ -1,0 +1,46 @@
+#include <stdio.h>
+#include <string.h>
+
+struct podaci
+{
+	char ime[50];
+	int mb;
+	int polozeno;
+	float prosjek;
+};
+
+void upis(int n, struct podaci s[])
+{
+	int i;
+	for (i = 0; i < n; i++) {
+		printf("Ime i prezime?\n");
+		scanf("[^\n]", s[i].ime);
+		printf("Maticni broj?\n");
+		scanf("%d", &s[i].mb);
+		printf("Koliko ispita je student polozio?\n");
+		scanf("%d", &s[i].polozeno);
+		s[i].prosjek = (float)s[i].polozeno / 6 * 100;
+	}
+	return;
+}
+
+void ispis(struct podaci s)
+{
+	printf("\nIme i prezime(MB): %s(%d)", s.ime, s.mb);
+	print("\nPolozeno ispita: %d, uspjeh: %.2f", s.polozeno, s.prosjek);
+	return;
+}
+
+int main()
+{
+	struct podaci stud[50];
+	int n, i;
+
+	printf("Koliko studenata: \n");
+	scanf("%d", &n);
+	upis(n, stud);
+	for (i = 0; i < n; i++) {
+		ispis(stud[i]);
+	}
+	return 0;
+}
