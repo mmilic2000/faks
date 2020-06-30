@@ -14,7 +14,7 @@ void upis(int n, struct podaci s[])
 	int i;
 	for (i = 0; i < n; i++) {
 		printf("Ime i prezime?\n");
-		scanf("[^\n]", s[i].ime);
+		scanf("%[^\n]", s[i].ime);
 		printf("Maticni broj?\n");
 		scanf("%d", &s[i].mb);
 		printf("Koliko ispita je student polozio?\n");
