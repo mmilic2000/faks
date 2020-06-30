@@ -1,0 +1,105 @@
+#include <stdio.h>
+
+typedef struct
+{
+	int broj;
+	int naz;
+}_razl;
+
+int nzd(int m, int n)
+{
+	int a, r;
+	if (m < n) {
+		a = m;
+		m = n;
+		n = a;
+	}
+	while ((r = m % n) != 0) {
+		m = n;
+		n = r;
+	}
+	return n;
+}
+
+_razl skrati_razl(_razl a)
+{
+	int d;
+	_razl r;
+	d = nzd(a.broj, a.naz);
+	r.naz = a.naz / d;
+	r.broj = a.broj / d;
+	return r;
+}
+
+_razl razlomke(_razl x, _razl y, _razl(*op)(_razl, _razl))
+{
+	return skrati_razl(op(x, y));
+}
+
+_razl zbroji(_razl x, _razl y)
+{
+	_razl z;
+	z.naz = x.naz * y.naz;
+	z.broj = y.naz * x.broj + x.naz * y.broj;
+	return z;
+}
+
+_razl oduzmi(_razl x, _razl y)
+{
+	_razl z;
+	z.naz = x.naz * y.naz;
+	z.broj = y.naz * x.broj - x.naz * y.broj;
+	return z;
+}
+
+_razl mnozi(_razl x, _razl y)
+{
+	_razl z;
+	z.broj = x.broj * y.broj;
+	z.naz = x.naz * y.naz;
+	return z;
+}
+
+_razl dijeli(_razl x, _razl y)
+{
+	_razl z;
+	z.broj = x.broj * y.naz;
+	z.naz = x.naz * y.broj;
+	return z;
+}
+
+int main()
+{
+	_razl a[2], b;
+	int i;
+	char op;
+	for (i = 0; i < 2; i++) {
+		printf("Unesite %d razlomak u obliku broj/naz:\n", i + 1);
+		scanf("%d/%d", &a[i].broj, &a[i].naz);
+		a[i] = skrati_razl(a[i]);
+	}
+	printf("Odaberi operaciju:\nz/o/m/d\n");
+	scanf(" %c", &op);
+	switch (op) {
+	case 'z':
+		b = razlomke(a[0], a[1], zbroji);
+		printf("Zbroj razlomaka je %d/%d", b.broj, b.naz);
+		break;
+	case 'o':
+		b = razlomke(a[0], a[1], oduzmi);
+		printf("Oduzimanje razlomaka je %d/%d", b.broj, b.naz);
+		break;
+	case 'm':
+		b = razlomke(a[0], a[1], mnozi);
+		printf("Mnozenje razlomaka je %d/%d", b.broj, b.naz);
+		break;
+	case 'd':
+		b = razlomke(a[0], a[1], dijeli);
+		printf("Dijeljenje razlomaka je %d/%d", b.broj, b.naz);
+		break;
+	default:
+		printf("Greska u unosu!");
+		break;
+	}
+	return 0;
+}
