@@ -1,0 +1,57 @@
+#include <stdio.h>
+#include <string.h>
+#include<stdlib.h>
+
+typedef struct {
+	char ime[50];
+	int GF;
+	int GA;
+}klub;
+
+int maxgolova(klub pklub, int br)
+{
+	int i, j;
+	int max = 0;
+	for (i = 0; i < br - 1; i++) {
+		for (j = 0; j < br; j++) {
+
+		}
+	}
+}
+
+int main()
+{
+	FILE* dat;
+	int i, br = 0, maxgol;
+	klub* pklub;
+	char line[100];
+
+	dat = fopen("rezultati.txt", "r");
+	if (dat == NULL) {
+		printf("Greska u ucitavanju datoteke!");
+		exit(1);
+	}
+	while (!feof(dat)) {
+		if (fgetc(dat) == '\n') {
+			br++;
+		}
+	}
+	printf("%d\n", br-1);
+	fseek(dat, 18, SEEK_SET);
+	pklub = (klub*)malloc(br * sizeof(klub));
+	for (i = 0; i < br; i++) {
+		fscanf(dat, "%s %d %d", pklub[i].ime, &pklub[i].GF, &pklub[i].GA);
+
+	}
+	printf("%s\n", pklub[0].ime);
+	maxgol = maxgolova(pklub, br);
+}
+
+/*int i, maksimum = 0, maxklub
+maksimum = pklub[0].GF-pklub[0].GA
+for(i = 1; i < br; i++){
+	if((pklub[i].GF-pklub[i].GA) > maksimum){
+		maksimum = pklub[i].GF-pklub[i].GA
+		
+	}
+}*/
