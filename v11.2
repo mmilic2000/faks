@@ -1,0 +1,67 @@
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#define MAX 80
+
+typedef struct {
+	char ime[MAX];
+	int mb;
+	int bod[5];
+	float pro;
+}_student;
+
+float prosjek(_student*s)
+{
+	int i, zbroj = 0;
+	for (i = 0; i < 5;i++) {
+		zbroj += s->bod[i];
+	}
+	return (float)zbroj / 5;
+}
+
+void ispis(FILE*dat, _student*s)
+{
+	int i;
+	fprintf(dat, "\n-27s %-5d", s->ime, s->mb);
+	for (i = 0; i < 5;i++) {
+		fprintf(dat, "%-3d ", s->bod[i]);
+	}
+	fprintf(dat, "     %5.2f", s->pro);
+}
+
+int main()
+{
+	FILE* izl, * ulz;
+	int br = 0, i, j;
+	_student* stud;
+	char tmp[80];
+
+	ulz = fopen("lista.txt", "r");
+	izl = fopen("kolokvij.txt", "w");
+
+	if ((ulz == NULL) || (izl == NULL)) {
+		printf("Greska s datotekama!");
+		exit(1);
+	}
+	fprintf(izl, "statistika prolaznosti na kolokviju:\n");
+	fprintf(izl, "\nStudent\t                 MB    I    II     III     IV     V            PROSJEK(%%)");
+	while (!feof(ulz))
+		if (fgetc(ulz) == '\n') br++;
+	stud = (_student*)malloc(br * sizeof(_student));
+	rewind(ulz);
+	for (i = 0; i < br; i++) {
+		fscanf(ulz, "%s %s %d", stud[i].ime, tmp, &stud[i].mb);
+		strcat(stud[i].ime, " ");
+		strcat(stud[i].ime, tmp);
+		for (j = 0; j < 5; j++) {
+			fscanf(ulz, "%d", &stud[i].bod[j]);
+		}
+		stud[i].pro = prosjek(stud + i);
+	}
+	for (i = 0; i < br; i++) {
+		ispis(izl, stud + i);
+	}
+	fclose(ulz);
+	fclose(izl);
+	return 0;
+}
