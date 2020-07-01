@@ -1,0 +1,42 @@
+#include<stdio.h>
+#include<string.h>
+#include<stdlib.h>
+
+typedef struct {
+	char imeprez[50];
+	int kos[3];
+}kosarkas;
+
+void unos(kosarkas *igrac, int n)
+{
+	int i;
+	for (i = 0; i < n; i++) {
+		printf("Ime i prezime kosarkasa?\n");
+		scanf(" %[^\n]", igrac[i].imeprez);
+		printf("Unesite 3 cijela broja:\n");
+		printf("Slobodna bacanja?\n");
+		scanf("%d", &igrac[i].kos[0]);
+		printf("Dvice?\n");
+		scanf("%d", &igrac[i].kos[1]);
+		printf("Trice?\n");
+		scanf("%d", &igrac[i].kos[2]);
+		
+	}
+	return;
+}
+
+int main()
+{
+	int i, n;
+	kosarkas* igrac;
+
+	printf("Koliko kosarkasa?");
+	scanf("%d", &n);
+
+	igrac = (char*)malloc(n * sizeof(kosarkas));
+	unos(igrac, n);
+	for (i = 0; i < n; i++) {
+		printf("Kosarkas %s imao je %d slobodnih bacanja, %d dvica i %d trica.\n", igrac[i].imeprez, igrac[i].kos[0], igrac[i].kos[1], igrac[i].kos[2]);
+	}
+	return 0;
+}
