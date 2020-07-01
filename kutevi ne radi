@@ -1,0 +1,48 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+typedef struct {
+	int stup;
+	int min;
+	double sek;
+}_kut;
+
+_kut pretvori(double kut)
+{
+	int stupanj, minuta;
+	double sekunda;
+	_kut* k;
+
+	stupanj = kut / 1;
+	minuta = (kut - stupanj) * 60;
+	minuta = minuta / 1;
+	sekunda = (kut - stupanj) * 60 - minuta;
+	sekunda = sekunda * 60;
+	k = (_kut*)malloc(1 * sizeof(_kut));
+	k[0].stup = stupanj;
+	k[1].min = minuta;
+	k[2].sek = sekunda;
+	return k[0];
+}
+
+int main()
+{
+	int i, n;
+	_kut* polje;
+	double deckut;
+
+	printf("Koliko kuteva zelis pretvoriti?\n");
+	scanf("%d", &n);
+
+	polje = (_kut*)malloc(n * sizeof(_kut));
+	for (i = 0; i < n; i++) {
+		printf("Unesi %d kut:\n", i + 1);
+		scanf("%lf", &deckut);
+		polje[i] = pretvori(deckut);
+	}
+	for (i = 0; i < n; i++) {
+		printf("%d %d %lf", polje[i].stup, polje[i].min, polje[i].sek);
+	}
+	return 0;
+}
