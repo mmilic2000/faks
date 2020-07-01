@@ -1,0 +1,55 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+typedef struct {
+	int redbr;
+	char ime[50];
+	float rez;
+}_atleticar;
+
+void ispis(_atleticar*atl, int n)
+{
+	int i, j;
+	_atleticar temp;
+	//FILE* fp;
+
+	for(i = 0; i < n-1; i++){
+		for (j = i + 1; j < n; j++) {
+			if (atl[i].rez < atl[j].rez) {
+				temp = atl[i];
+				atl[i] = atl[j];
+				atl[j] = temp;
+			}
+		}
+	}
+	//for (i = 0; i < n; i++) {
+	//	fprintf(fp, "Atleticar rednog broja %d, imena %s postigao je %f metara visine", atl[i].redbr, atl[i].ime, atl[i].rez);
+	}
+	//fclose(fp);
+
+int main()
+{
+	int n, i;
+	_atleticar* atl;
+	FILE* fp;
+
+	fp = fopen("atleticari.txt", "w");
+	printf("Koliko atleticara?\n");
+	scanf("%d", &n);
+	atl = (_atleticar*)malloc(n * sizeof(_atleticar));
+	for (i = 0; i < n; i++) {
+		printf("Redni broj?\n");
+		scanf("%d", &atl[i].redbr);
+		printf("Ime atleticara?\n");
+		scanf(" %[^\n]", atl[i].ime);
+		printf("Rezultat?\n");
+		scanf("%f", &atl[i].rez);
+	}
+	ispis(atl, n);
+	for (i = 0; i < n; i++) {
+		fprintf(fp, "%d mjesto ostvario je atleticar rednog broja %d, imena %s postigao je %f metara visine\n",i+1, atl[i].redbr, atl[i].ime, atl[i].rez);
+	}
+	fclose(fp);
+	return 0;
+}
