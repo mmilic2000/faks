@@ -1,0 +1,57 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+typedef struct {
+	char ime[50];
+	char adresa[30];
+	float troskovi;
+}_student;
+
+void slozi(_student*s, int n)
+{
+	int i, j;
+	_student* zam;
+	zam = (_student*)malloc(sizeof(_student)*1);
+	for (i = 0; i < n-1; i++) {
+		for (j = i+1; j < n; j++) {
+			if (s[i].troskovi > s[j].troskovi) {
+				zam[0] = s[i];
+				s[i] = s[j];
+				s[j] = zam[0];
+
+			}
+		}
+	}
+	return;
+}
+
+int main()
+{
+	FILE* fp;
+	int i, n;
+	_student* stud;
+
+	fp = fopen("troskovi.txt", "w");
+	printf("Koliko studenata?\n");
+	scanf("%d", &n);
+	stud = (_student*)malloc(n * (sizeof(_student)));
+	for (i = 0; i < n; i++) {
+		printf("Ime i prezime?\n");
+		scanf(" %[^\n]", stud[i].ime);
+		printf("Adresa studenta?\n");
+		scanf(" %[^\n]", stud[i].adresa);
+		printf("Trosak?\n");
+		scanf("%f", &stud[i].troskovi);
+	}
+	slozi(stud, n);
+
+	for (i = 0; i < n; i++) {
+		if (stud[i].troskovi > 99) {
+			fprintf(fp, "%s %s\n", stud[i].ime, stud[i].adresa);
+			fprintf(fp, "Postovani, vasi troskovi iznose %f kuna.\n", stud[i].troskovi);
+		}
+	}
+	fclose(fp);
+	return 0;
+}
