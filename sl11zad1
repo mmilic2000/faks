@@ -1,0 +1,46 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+void sam(char**niz, int n)
+{
+	int i, j;
+	for (i = 0; i < n; i++) {
+		for (j = 0; j < strlen(niz[i]); j++) {
+			if (niz[i][j] == 'a' || niz[i][j] == 'e' || niz[i][j] == 'i' || niz[i][j] == 'o' || niz[i][j] == 'u') {
+				printf(" %c", niz[i][j]);
+			}
+		}
+	}
+	return;
+}
+
+int main()
+{
+	char** niz = NULL, rec[80];
+	int brzn;
+	int brr = 0;
+	int i, j, red;
+
+	do {
+		printf("Uneiste jednu recenicu:\n");
+		fgets(rec, sizeof(rec), stdin);
+		brzn = strlen(rec) - 1;
+		if (brzn == 0) {
+			break;
+		}
+		brr++;
+		niz = (char**)realloc(niz, brr * sizeof(char*));
+		if (niz == NULL) {
+			return 1;
+		}
+		niz[brr - 1] = (char*)malloc((brzn + 1) * sizeof(char));
+		j = 0;
+		while (rec[j] != '\n') {
+			niz[brr - 1][j] = rec[j];
+		}
+	} while (brzn != 0);
+	sam(niz, brr);
+	return 0;
+	
+}
