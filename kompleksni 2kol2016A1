@@ -4,17 +4,21 @@
 
 typedef struct
 {
-	double re; 
+	double re;
 	double im;
 }_complex;
 
 void ispis(_complex* cplx, int n)
 {
-	if (cplx->im < 0) {
-		printf("Kompleksni broj je: %lf%lfi\n", cplx->re, cplx->im);
-	}
-	else {
-		printf("Kompleksni broj je: %lf+%lfi\n", cplx->re, cplx->im);
+	int i;
+
+	for (i = 0; i < n; i++) {
+		if (cplx[i].im < 0) {
+			printf("Kompleksni broj je: %lf%lfi\n", cplx[i].re, cplx[i].im);
+		}
+		else {
+			printf("Kompleksni broj je: %lf+%lfi\n", cplx[i].re, cplx[i].im);
+		}
 	}
 	return;
 }
@@ -34,9 +38,9 @@ int main()
 		printf("Imaginarni dio %d kompleksnog broja:\n", i + 1);
 		scanf("%lf", &cplx[i].im);
 	}
-	for (i = 0; i < n; i++) {
-		ispis(cplx + i, n);
-	}
 	
+	ispis(cplx, n);
+	
+
 	return 0;
 }
