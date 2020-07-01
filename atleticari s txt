@@ -12,7 +12,7 @@ void ispis(_atleticar*atl, int n)
 {
 	int i, j;
 	_atleticar temp;
-	//FILE* fp;
+	
 
 	for(i = 0; i < n-1; i++){
 		for (j = i + 1; j < n; j++) {
@@ -23,10 +23,9 @@ void ispis(_atleticar*atl, int n)
 			}
 		}
 	}
-	//for (i = 0; i < n; i++) {
-	//	fprintf(fp, "Atleticar rednog broja %d, imena %s postigao je %f metara visine", atl[i].redbr, atl[i].ime, atl[i].rez);
+	
 	}
-	//fclose(fp);
+	
 
 int main()
 {
