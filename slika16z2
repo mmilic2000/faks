@@ -1,0 +1,35 @@
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+
+void ispis(char** r, int n)
+{
+	int i, j;
+	for (i = 0; i < n; i++) {
+		for (j = 0; j < strlen(r[i]) - 1; j++) {
+			if (r[i][j] == r[i][j + 1]) {
+				printf(" %s", r[i]);
+			}
+		}
+	}
+}
+
+int main()
+{
+	int n, i;
+	char** ric;
+	int brslova;
+
+	printf("Koliko rijeci u nizu?\n");
+	scanf("%d", &n);
+
+	ric = (char**)malloc(sizeof(char*) * n);
+	for (i = 0; i < n; i++) {
+		*(ric + i) = (char*)malloc(sizeof(char) * 30);
+	}
+	for (i = 0; i < n; i++) {
+		printf("Unesi %d rijec\n", i + 1);
+		scanf(" %[^\n]", ric[i]);
+	}
+	ispis(ric, n);
+}
