@@ -1,0 +1,55 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+typedef struct
+{
+	double re;
+	double im;
+}_complex;
+
+void ispis(_complex* cplx, int n)
+{
+	int i;
+
+	for (i = 0; i < n; i++) {
+		if (cplx[i].im < 0) {
+			printf("Kompleksni broj je: %lf%lfi\n", cplx[i].re, cplx[i].im);
+		}
+		else {
+			printf("Kompleksni broj je: %lf+%lfi\n", cplx[i].re, cplx[i].im);
+		}
+	}
+	return;
+}
+
+int main()
+{
+	int i, n;
+	_complex* cplx1; 
+	_complex* cplx2;
+
+	printf("Koliko clanova zelis?\n");
+	scanf("%d", &n);
+	cplx1 = (_complex*)malloc(n * sizeof(_complex));
+	cplx2 = (_complex*)malloc(n * sizeof(_complex));
+	printf("Unesite kompleksne brojeve: \n");
+	for (i = 0; i < n; i++) {
+		printf("Realni dio %d kompleksnog broja:\n", i + 1);
+		scanf("%lf", &cplx1[i].re);
+		printf("Imaginarni dio %d kompleksnog broja:\n", i + 1);
+		scanf("%lf", &cplx1[i].im);
+	}
+	ispis(cplx1, n);
+	printf("Unesite kompleksne brojeve: \n");
+	for (i = 0; i < n; i++) {
+		printf("Realni dio %d kompleksnog broja:\n", i + 1);
+		scanf("%lf", &cplx2[i].re);
+		printf("Imaginarni dio %d kompleksnog broja:\n", i + 1);
+		scanf("%lf", &cplx2[i].im);
+	}
+	ispis(cplx2, n);
+	
+
+	return 0;
+}
